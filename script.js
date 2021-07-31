@@ -55,22 +55,16 @@ function generatePassword() {
   console.log(userSelected);
 
   // result += userSelected.charAt(Math.floor(Math.random() * userLength));
-
-  function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
- charactersLength));
+  var result = " ";
+  for (var i = 0; i < userLength; i++) {
+    result += userSelected.charAt(Math.floor(Math.random() * userLength));
+  }
 
   //this is where we actually generate the password. Use a loop
   //what type of loop, how many times to loop, how to get random character from a string
   //random index selection
-
-  return;
+  return result;
 }
-
 // Write password to the #password input
 function writePassword() {
   //declares variable as password as the function generate password.
