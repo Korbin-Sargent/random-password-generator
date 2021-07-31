@@ -6,20 +6,35 @@ var number = "0123456789";
 var special = "`!@#$%^&*()?";
 console.log(generateBtn);
 
-//function runs
+//function runs to generate a password
 function generatePassword() {
-  //creating a sting of characters that the user would like to use in their password
+  //creating a string of characters that the user would like to use in their password
   var userSelected = "";
-  var userLength = prompt("Type a number between 8 and 128");
-  console.log(userLength);
-  var hasLowercase = confirm("Would you like to include lowercase numbers?");
+  var userLength = prompt(
+    "Type a number between 8 and 128 to set your password character length"
+  );
+  //changes userLength from a string to a numeric value
+  userLength = Number(userLength);
+  if (userLength < 8) {
+    alert("password length must be atleast 8 characters long");
+    var userLength = prompt("Type a number between 8 and 128");
+    userLength = Number(userLength);
+  }
+  if (userLength > 128) {
+    alert("password length cannot exceed 128 characters long");
+    var userLength = prompt("Type a number between 8 and 128");
+    userLength = Number(userLength);
+  }
+
   //if statement is adding lowercase characters to our variable userSelected
   //if user chooses to include lowercase letters
+  var hasLowercase = confirm("Would you like to include lowercase numbers?");
   if (hasLowercase) {
     userSelected = userSelected + lowercase;
   }
   console.log(userSelected);
 
+  //includes upper clase letters if user chooses to include on confirm pop up
   var hasUppercase = confirm("Would you like to include uppercase letters?");
   if (hasUppercase) {
     userSelected = userSelected + uppercase;
@@ -39,6 +54,16 @@ function generatePassword() {
 
   console.log(userSelected);
 
+  // result += userSelected.charAt(Math.floor(Math.random() * userLength));
+
+  function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+
   //this is where we actually generate the password. Use a loop
   //what type of loop, how many times to loop, how to get random character from a string
   //random index selection
@@ -48,6 +73,7 @@ function generatePassword() {
 
 // Write password to the #password input
 function writePassword() {
+  //declares variable as password as the function generate password.
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
