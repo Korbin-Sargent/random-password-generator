@@ -10,7 +10,10 @@ var special = "`!@#$%^&*()?";
 //that will be used to create password.
 function generatePassword() {
   //creating a string of characters that the user would like to use in their password
-  var userSelected = "";
+  var userSelectedLowercase = "";
+  var userSelectedUppercase = "";
+  var userSelectedNumber = "";
+  var userSelectedSpecial = "";
 
   var userLength = prompt(
     "Type a number between 8 and 128 to set your password character length"
@@ -31,7 +34,6 @@ function generatePassword() {
     return generatePassword();
   }
 
-  console.log(typeof userLength);
   if (userLength % 1 !== 0) {
     alert("Password length must be a whole number");
     return generatePassword();
@@ -59,6 +61,14 @@ function generatePassword() {
     userSelectedSpecial = special;
   }
 
+  //if user does not select any character types for their password, this will prompt
+  //them to select atleast one character type and restart generatePassword function.
+  if (!hasLowercase && !hasUppercase && !hasNumber && !hasSpecial) {
+    alert(
+      "Atleast one character type needs to be selected to generate password."
+    );
+    return generatePassword();
+  }
   //this for loop chooses random characters from the userSelected
   //character string to generates password
   var result = "";
@@ -75,7 +85,15 @@ function generatePassword() {
     );
   }
 
-  var finalResult = result.slice(0, userLength);
+  //slice down length of password down to number of characters requested by user.
+  var slicedResult = result.slice(0, userLength);
+
+  var finalResult = slicedResult
+    .split("")
+    .sort(function () {
+      return 0.5 - Math.random();
+    })
+    .join("");
 
   return finalResult;
 }
