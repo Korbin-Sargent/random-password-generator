@@ -28,4 +28,7 @@ Below is a guide of how I built the logic for a random password generator. As an
 
 -Finished password was return by function and displayed on the screen for the user.
 
-Live link here!
+Live link here! https://korbin-sargent.github.io/random-password-generator/
+
+<img width="1437" alt="Screen Shot 2021-08-01 at 3 54 17 PM" src="https://user-images.githubusercontent.com/87394831/127786414-f16d8ac0-a65c-4307-8948-6fc4a83fbec3.png">
+
